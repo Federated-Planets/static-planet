@@ -10,7 +10,7 @@ To serve as a standard planet, this project includes:
 
 - **`public/index.html`**: The source **Landing Site** of the planet.
 - **`public/planet.css` & `public/map.js`**: Centralized styles and interactivity for the planet and its map.
-- **`public/manifest.json`**: The metadata file for your planet.
+- **`public/space-manifest.json`**: The metadata file for your planet.
 - **`dist/`**: The generated output directory containing the synchronized site.
 - **`scripts/update-map.js`**: The build script that parses the HTML links and generates deterministic coordinates.
 

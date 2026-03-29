@@ -28,27 +28,32 @@ const updateFiles = () => {
   const srcDir = path.join(__dirname, '../public');
   const distDir = path.join(__dirname, '../dist');
   
-  const manifestSrcPath = path.join(srcDir, 'manifest.json');
+  const manifestSrcPath = path.join(srcDir, 'space-manifest.json');
   const indexSrcPath = path.join(srcDir, 'index.html');
   const cssSrcPath = path.join(srcDir, 'planet.css');
   const jsSrcPath = path.join(srcDir, 'map.js');
+  const threeSrcPath = path.join(srcDir, 'three.min.js');
   
-  const manifestDistPath = path.join(distDir, 'manifest.json');
+  const manifestDistPath = path.join(distDir, 'space-manifest.json');
   const indexDistPath = path.join(distDir, 'index.html');
   const cssDistPath = path.join(distDir, 'planet.css');
   const jsDistPath = path.join(distDir, 'map.js');
+  const threeDistPath = path.join(distDir, 'three.min.js');
 
   if (!fs.existsSync(distDir)) {
     fs.mkdirSync(distDir, { recursive: true });
   }
   
   const manifest = JSON.parse(fs.readFileSync(manifestSrcPath, 'utf8'));
-  const myCoords = calculateCoordinates(manifest.landing_site);
+  const myCoords = calculateCoordinates(manifest.landing_site || manifest.canonical_url || 'https://federatedplanets.com');
   
   // No longer saving coordinates to manifest per instructions
   fs.writeFileSync(manifestDistPath, JSON.stringify(manifest, null, 2));
   fs.copyFileSync(cssSrcPath, cssDistPath);
   fs.copyFileSync(jsSrcPath, jsDistPath);
+  if (fs.existsSync(threeSrcPath)) {
+    fs.copyFileSync(threeSrcPath, threeDistPath);
+  }
 
   const indexHtml = fs.readFileSync(indexSrcPath, 'utf8');
   const $ = cheerio.load(indexHtml);
