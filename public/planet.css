@@ -3,7 +3,7 @@
   --sky-bg: #0b0e14;
   --sky-text: #e0e0e0;
   --sky-text-dim: #888;
-  --sky-accent: #4a90e2;
+  --sky-accent: #2ecc71; /* Planet color is Green */
 
   /* Theme-Aware Warp Ring Colors (Defaults to Dark) */
   --warp-bg: linear-gradient(
@@ -14,7 +14,7 @@
   --warp-text: #e0e0e0;
   --warp-text-dim: #888;
   --warp-border: #444;
-  --warp-accent: #4a90e2;
+  --warp-accent: #4a90e2; /* Map accents are Blue */
   --map-bg: #0b0e14;
   --map-grid: rgba(255, 255, 255, 0.05);
   --coord-bg: rgba(255, 255, 255, 0.05);
@@ -125,7 +125,7 @@ body::after {
 .planet {
   width: 200px;
   height: 200px;
-  background: radial-gradient(circle at 30% 30%, var(--sky-accent), #1b2735);
+  background: radial-gradient(circle at 30% 30%, var(--sky-accent), #1b3527);
   border-radius: 50%;
   box-shadow:
     inset -20px -20px 50px rgba(0, 0, 0, 0.5),
@@ -187,10 +187,10 @@ body::after {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(74, 144, 226, 0.1) 0%,
+    rgba(46, 204, 113, 0.1) 0%,
     transparent 70%
   );
-  box-shadow: 0 0 40px rgba(74, 144, 226, 0.1);
+  box-shadow: 0 0 40px rgba(46, 204, 113, 0.1);
   z-index: 0;
 }
 
@@ -306,10 +306,8 @@ p {
 }
 
 .warp-links {
-  flex: 1;
-  margin: 0;
-  padding: 0 0 0 2rem; /* Give space for numbers */
-  list-style-position: outside;
+  list-style: none;
+  padding: 0;
 }
 
 .warp-links li {
@@ -322,13 +320,12 @@ p {
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.2s ease;
-  list-style: none; /* Flex items don't work well with list-style-type */
+  list-style: none;
 }
 
-/* Optional: add manual numbering if desired, or keep as simple list */
-.warp-links {
-  list-style: none;
-  padding: 0;
+.warp-links li:hover,
+.warp-links li.active {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .warp-links li a {
@@ -347,11 +344,6 @@ p {
 }
 
 .warp-links li a:hover,
-.warp-links li a.active {
-  color: #fff;
-  text-shadow: 0 0 10px var(--warp-accent);
-}
-
 .warp-links li a.active {
   color: #fff;
   text-shadow: 0 0 10px var(--warp-accent);

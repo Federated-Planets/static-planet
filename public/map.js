@@ -1,5 +1,5 @@
 // 3D Star Map using ThreeJS
-let scene, camera, renderer, cube, planetsGroup;
+let scene, camera, renderer, planetsGroup;
 const planetPoints = [];
 let selectedId = null;
 
@@ -34,7 +34,7 @@ const initThree = () => {
   const myZ = parseFloat(document.body.dataset.myZ) - 500;
 
   const myPlanetGeo = new THREE.SphereGeometry(15, 32, 32);
-  const myPlanetMat = new THREE.MeshBasicMaterial({ color: 0x2ecc71 });
+  const myPlanetMat = new THREE.MeshBasicMaterial({ color: 0x2ecc71 }); // Green Planet
   const myPlanet = new THREE.Mesh(myPlanetGeo, myPlanetMat);
   myPlanet.position.set(myX, myY, myZ);
   planetsGroup.add(myPlanet);
@@ -59,7 +59,7 @@ const initThree = () => {
 
     const neighborGeo = new THREE.SphereGeometry(8, 16, 16);
     const neighborMat = new THREE.MeshBasicMaterial({ 
-      color: 0x4a90e2,
+      color: 0x4a90e2, // Revert to Blue Map points
       transparent: true,
       opacity: 0.6
     });
@@ -76,7 +76,7 @@ const initThree = () => {
     ];
     const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
     const lineMat = new THREE.LineDashedMaterial({
-      color: 0x4a90e2,
+      color: 0x4a90e2, // Revert to Blue Connection lines
       dashSize: 20,
       gapSize: 10,
       transparent: true,
@@ -210,6 +210,13 @@ const initMap = () => {
     warpRing.addEventListener("mouseout", handleHover);
     warpRing.addEventListener("click", handleClick);
   }
+
+  window.addEventListener('clearSelection', () => {
+    if (selectedId) {
+        updateHighlight(selectedId, false);
+        selectedId = null;
+    }
+  });
 };
 
 if (document.readyState === "loading") {
