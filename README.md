@@ -16,10 +16,15 @@ To serve as a standard planet, this project includes:
 
 ## Development and Build
 
-1.  **Customize your planet:** Edit `public/index.html` and `public/manifest.json`.
-2.  **Update coordinates:** Every time you add or change links in the Warp Ring, run:
+1.  **Customize your planet:** Edit `public/index.html` and `public/space-manifest.json`.
+2.  **Set your domain:** Create a `.env` file in the root of this project and set your production domain:
+    ```env
+    PLANET_PUBLIC_DOMAIN=your-planet-domain.com
+    ```
+    _Note: This domain is used to deterministically calculate your planet's coordinates. The build will fail if this variable is not set._
+3.  **Update coordinates:** Every time you add or change links in the Warp Ring, run:
     ```bash
     npm install  # First time only
     npm run build
     ```
-3.  **Local Preview:** Use `npm start` to serve the `dist/` folder.
+4.  **Local Preview:** Use `npm start` to serve the `dist/` folder.

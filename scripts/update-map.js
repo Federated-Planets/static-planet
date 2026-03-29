@@ -2,6 +2,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
 const cheerio = require('cheerio');
+require('dotenv').config();
 
 const formatCoord = (n) => n.toFixed(2).padStart(6, '0');
 
@@ -45,7 +46,15 @@ const updateFiles = () => {
   }
   
   const manifest = JSON.parse(fs.readFileSync(manifestSrcPath, 'utf8'));
-  const myCoords = calculateCoordinates(manifest.landing_site || manifest.canonical_url || 'https://federatedplanets.com');
+  const siteDomain = process.env.PLANET_PUBLIC_DOMAIN;
+  
+  if (!siteDomain) {
+    console.error(chalk.red('ERROR: PLANET_PUBLIC_DOMAIN environment variable is required for coordinate calculation.'));
+    process.exit(1);
+  }
+
+  // Ensure we pass a valid URL structure to the calculator
+  const myCoords = calculateCoordinates('https://' + siteDomain);
   
   // No longer saving coordinates to manifest per instructions
   fs.writeFileSync(manifestDistPath, JSON.stringify(manifest, null, 2));
