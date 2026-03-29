@@ -4,7 +4,9 @@
   "description": "A decentralized space exploration game where every planet is a sovereign website.",
   "scripts": {
     "build": "node scripts/update-map.js",
-    "start": "serve dist"
+    "start": "serve dist",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "dependencies": {
     "chalk": "^4.1.2",
@@ -12,7 +14,8 @@
     "dotenv": "^17.3.1"
   },
   "devDependencies": {
-    "serve": "^14.2.6"
+    "serve": "^14.2.6",
+    "wrangler": "^4.78.0"
   },
   "author": "Sergey Chernyshev",
   "license": "Apache-2.0"
