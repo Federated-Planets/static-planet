@@ -2,6 +2,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
 const cheerio = require('cheerio');
+const chalk = require('chalk');
 require('dotenv').config();
 
 const formatCoord = (n) => n.toFixed(2).padStart(6, '0');
