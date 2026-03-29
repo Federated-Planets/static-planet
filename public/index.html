@@ -7,6 +7,7 @@
     <title>Landing Site - Towel 42 Space Outpost</title>
     <link rel="space-manifest" href="/manifest.json" />
     <link rel="stylesheet" href="/planet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
     <script src="/map.js" defer></script>
   </head>
   <body>
@@ -21,7 +22,7 @@
     <p>Landing Site of a remote federation outpost.</p>
     <p>
       Coordinates:
-      <code class="coord-display">394.001 - 162.787</code>
+      <code class="coord-display">394.00:162.79:882.12</code>
     </p>
 
     <section class="warp-ring">
@@ -29,50 +30,9 @@
 
       <div class="warp-ring-content">
         <div class="star-map-wrapper">
-          <!-- Universe Star Map (SVG) -->
-          <div class="star-map-container">
-            <svg viewBox="0 0 1000 1000" id="universe-map">
-              <!-- Grid Lines -->
-              <line
-                class="map-grid-line"
-                x1="0"
-                y1="500"
-                x2="1000"
-                y2="500"
-              ></line>
-              <line
-                class="map-grid-line"
-                x1="500"
-                y1="0"
-                x2="500"
-                y2="1000"
-              ></line>
-
-              <!-- Dynamic Content Containers (Populated by build script) -->
-              <g id="map-course-lines"></g>
-              <g id="map-planets"></g>
-
-              <!-- You Are Here (Crosshair) -->
-              <g class="crosshair" transform="translate(394.001, 162.787)">
-                <line
-                  class="crosshair-line h"
-                  x1="-30"
-                  y1="0"
-                  x2="30"
-                  y2="0"
-                ></line>
-                <line
-                  class="crosshair-line v"
-                  x1="0"
-                  y1="-30"
-                  x2="0"
-                  y2="30"
-                ></line>
-                <circle class="crosshair-circle" cx="0" cy="0" r="10"></circle>
-                <circle class="crosshair-pulse" cx="0" cy="0" r="10"></circle>
-              </g>
-            </svg>
-            <div class="map-label">1000x1000 SPARSEC GRID</div>
+          <!-- Universe Star Map (ThreeJS) -->
+          <div class="star-map-container" id="three-container">
+            <div class="map-label">1000x1000x1000 SPARSEC GRID</div>
           </div>
 
           <!-- Map Legend -->
