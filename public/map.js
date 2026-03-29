@@ -24,20 +24,9 @@ const initThree = () => {
   renderer.setPixelRatio(window.devicePixelRatio);
   container.appendChild(renderer.domElement);
 
-  // The Sparsec Grid Cube (1000x1000x1000)
-  const geometry = new THREE.BoxGeometry(1000, 1000, 1000);
-  const edges = new THREE.EdgesGeometry(geometry);
-  const lineMaterial = new THREE.LineBasicMaterial({ 
-    color: 0x444444,
-    transparent: true,
-    opacity: 0.3
-  });
-  cube = new THREE.LineSegments(edges, lineMaterial);
-  scene.add(cube);
-
   // Planets Group
   planetsGroup = new THREE.Group();
-  cube.add(planetsGroup);
+  scene.add(planetsGroup);
 
   // Add "You Are Here"
   const myX = parseFloat(document.body.dataset.myX) - 500;
@@ -105,8 +94,8 @@ const initThree = () => {
     requestAnimationFrame(animate);
 
     // Slow rotation
-    cube.rotation.y += 0.002;
-    cube.rotation.x += 0.001;
+    planetsGroup.rotation.y += 0.002;
+    planetsGroup.rotation.x += 0.001;
 
     // Pulse animation
     if (myPlanet.userData.pulse) {
