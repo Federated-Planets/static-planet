@@ -1,5 +1,5 @@
 {
-  "name": "federated-planets",
+  "name": "@federated-planets/static-planet",
   "version": "1.0.0",
   "description": "A decentralized space exploration game where every planet is a sovereign website.",
   "scripts": {
@@ -12,6 +12,6 @@
   "devDependencies": {
     "serve": "^14.2.6"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Sergey Chernyshev",
+  "license": "Apache-2.0"
 }
